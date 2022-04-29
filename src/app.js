@@ -38,7 +38,9 @@ app.get('/about', (req, res) => {
 app.get('/help', (req, res) => {
         res.render('help', {
             title: 'Help',
-            message: 'This page will help you to use the website',
+            message1: 'This website helps you to search for weather:',
+            message2: 'go to the weather page and enter the location in the search box \n'+ 
+                      'then press search button.',
             footerMessage: '&copy; 2022, Weather App'
         })
     })
