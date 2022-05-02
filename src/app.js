@@ -1,8 +1,9 @@
+console.log(process.env)
 const path = require('path')
 const express = require("express")
 const hbs = require('hbs')
 const geocode = require('./utils/geocode')
-const forcast = require('./utils/forcast')
+const forecast = require('./utils/forecast')
 
 const app = express()
 
@@ -56,12 +57,12 @@ app.get('/weather', (req, res) => {
         if(error){
             return res.send(error)
         }
-        forcast(latitude, longitude, (error, forcastData) => {
+        forecast(latitude, longitude, (error, forecastData) => {
             if(error){
                return res.send(error)
             }
             res.send({
-                forcast: forcastData,
+                forecast: forecastData,
                 location,
                 address: req.query.address,
             })
@@ -98,6 +99,7 @@ app.get('*', (req, res) => {
         errorMessage: 'My 404 page'
     })
 })
+
 
 app.listen(3000, ()=>{
     console.log('Server is up on port 3000')
